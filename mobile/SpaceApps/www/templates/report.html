@@ -1,5 +1,5 @@
 <ion-view class="state-report" view-title="Report">
-  <ion-content padding="true">
+  <ion-content class="padding">
     <h2 class="text-center">Report an incident</h2>
 
     <div>
@@ -22,11 +22,27 @@
     <div>
       <h4>Pick Location</h4>
       <ng-map
-        zoom="10"
+        style="height:250px"
+        zoom="9"
         center="[34.999481, 32.9986789]"
         street-view-control="false"
         disable-default-u-i="true">
+        <marker
+          position="34.999481, 32.9986789"
+          draggable="true"
+          on-dragend="reportCtrl.onDragEnd()">
+        </marker>
       </ng-map>
+    </div>
+    <br>
+
+    <div class="text-center">
+      <button
+        class="button button-dark"
+        ng-click="reportCtrl.reportIncident()"
+        ng-disabled="!reportCtrl.isIncident()">
+        Submit
+      </button>
     </div>
   </ion-content>
 </ion-view>

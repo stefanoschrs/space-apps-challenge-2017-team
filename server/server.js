@@ -13,18 +13,55 @@ const server = http.Server(app);
 const io = socketIo(server);
 
 let dummyLocations = {
-  shelters: [
-    { lat: 35.000139, lng: 32.9980223, data: { name: 'Shelter 1', id: uuid() }},
-    { lat: 34.999221, lng: 32.9942183, data: { name: 'Shelter 2', id: uuid() }},
-    { lat: 34.998221, lng: 32.9902183, data: { name: 'Shelter 3', id: uuid() }}
-  ],
-  fire: [
-    { lat: 34.997239, lng: 32.9956561, data: { name: 'Fire 1', id: uuid() }},
-    { lat: 34.997206, lng: 32.9984601, data: { name: 'Fire 2', id: uuid() }},
-    { lat: 34.997306, lng: 32.9934601, data: { name: 'Fire 3', id: uuid() }},
-    { lat: 34.997406, lng: 32.9894601, data: { name: 'Fire 4', id: uuid() }},
-    { lat: 34.997506, lng: 32.9844601, data: { name: 'Fire 5', id: uuid() }}
-  ]
+  shelters: (() => {
+    return new Array(3)
+      .join('0')
+      .split('')
+      .map((el, index) => {
+        return {
+          lat: 34.99 + Math.random() * 0.1,
+          lng: 32.99 + Math.random() * 0.1,
+
+          temperatureInside: Math.random() * 25 + 20,
+          carbonDioxideInside: Math.random() * 1000 + 350,
+          oxygenInside: Math.random() * 20 + 18,
+          nitrogenInside: Math.random() * 79 + 78,
+          argonInside: Math.random() * 1 + 0,
+
+
+          temperatureOutside: Math.random() * 40 + 20,
+          carbonDioxideOutside: Math.random() * 450 + 350,
+          humidityOutside:  Math.random() * 40 + 0,
+          oxygenOutside: Math.random() * 20 + 18,
+          nitrogenOutside: Math.random() * 79+ 78,
+          argonOutside: Math.random() * 1 + 0,
+          barometerOutside: Math.random() * 767 + 757,
+          windSpeedOutside: Math.random() * 12 + 0,
+          rainFallOutside: Math.random() * 25 + 0,
+
+          data: {
+            name: `Shelter ${index}`,
+            id: uuid()
+          }
+        }
+      })
+  })(),
+  fire: (() => {
+    return new Array(6)
+      .join('0')
+      .split('')
+      .map((el, index) => {
+        return {
+          lat: 34.99 + Math.random() * 0.01,
+          lng: 32.99 + Math.random() * 0.01,
+
+          data: {
+            name: `Fire ${index}`,
+            id: uuid()
+          }
+        }
+      })
+  })()
 }
 
 app.use(bodyParser.json())
@@ -44,9 +81,10 @@ app.get('/api/shelters', (req, res) => res.send({
 app.post('/api/report', (req, res) => {
   res.sendStatus(200)
 
-  let data = req.body.data
-  data.data.id = uuid()
-  dummyLocations[req.body.type].push(req.body.data)
+  const type = req.body.type
+  delete req.body.type
+  req.body.data.id = uuid()
+  dummyLocations[type].push(req.body.data)
   sendLocations()
 })
 

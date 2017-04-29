@@ -15,6 +15,7 @@
 
     vm.selectShelter = selectShelter
     vm.findNearestShelter = findNearestShelter
+    vm.closeModal = closeModal
 
     $ionicModal
       .fromTemplateUrl('templates/shelter.modal.html', {
@@ -63,6 +64,10 @@
     function selectShelter (value) {
       vm.selectedShelter = value
       vm.modal.show()
+    }
+
+    function closeModal () {
+      vm.modal.hide()
     }
   }
 })()

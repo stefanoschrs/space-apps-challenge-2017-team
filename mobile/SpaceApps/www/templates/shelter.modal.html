@@ -1,9 +1,27 @@
 <ion-modal-view>
   <ion-header-bar>
     <h1 class="title" ng-bind="sheltersCtrl.selectedShelter.data.name"></h1>
+    <button class="button button-icon icon ion-close" ng-click="sheltersCtrl.closeModal()"></button>
   </ion-header-bar>
 
-  <ion-content padding="true">
-    <span ng-bind="sheltersCtrl.selectedShelter | json"></span>
+  <ion-content class="padding">
+    <h4>Indoor: </h4>
+    <p>Temperature: <strong><span ng-bind="sheltersCtrl.selectedShelter.temperatureInside | number:2"></span> °C</strong></p>
+    <p>Carbon Dioxide: <strong><span ng-bind="sheltersCtrl.selectedShelter.carbonDioxideInside | number:2"></span> ppm</strong></p>
+    <p>Oxygen: <strong><span ng-bind="sheltersCtrl.selectedShelter.oxygenInside | number:2"></span> %</strong></p>
+    <p>Nitrogen: <strong><span ng-bind="sheltersCtrl.selectedShelter.nitrogenInside | number:2"></span> %</strong></p>
+    <p>Argon: <strong><span ng-bind="sheltersCtrl.selectedShelter.argonInside | number:2"></span> %</strong></p>
+    <br>
+
+    <h4>Outdoor: </h4>
+    <p>Temperature: <strong><span ng-bind="sheltersCtrl.selectedShelter.temperatureOutside | number:2"></span> °C</strong></p>
+    <p>Carbon Dioxide: <strong><span ng-bind="sheltersCtrl.selectedShelter.carbonDioxideOutside | number:2"></span> ppm</strong></p>
+    <p>Humidity: <strong><span ng-bind="sheltersCtrl.selectedShelter.humidityOutside | number:2"></span> %</strong></p>
+    <p>Oxygen: <strong><span ng-bind="sheltersCtrl.selectedShelter.oxygenOutside | number:2"></span> %</strong></p>
+    <p>Nitrogen: <strong><span ng-bind="sheltersCtrl.selectedShelter.nitrogenOutside | number:2"></span> %</strong></p>
+    <p>Argon: <strong><span ng-bind="sheltersCtrl.selectedShelter.argonOutside | number:2"></span> %</strong></p>
+    <p>Barometer: <strong><span ng-bind="sheltersCtrl.selectedShelter.barometerOutside | number:2"></span> mmHg</strong></p>
+    <p>Wind Speed: <strong><span ng-bind="sheltersCtrl.selectedShelter.windSpeedOutside | number:2"></span> beaufort</strong></p>
+    <p>Rainfall: <strong><span ng-bind="sheltersCtrl.selectedShelter.rainFallOutside | number:2"></span> mm</strong></p>
   </ion-content>
 </ion-modal-view>

@@ -21,7 +21,10 @@
         name: ''
       }
     }
+
     vm.reportIncident = reportIncident
+    vm.isIncident = isIncident
+    vm.onDragEnd = onDragEnd
 
     NgMap
       .getMap()
@@ -37,6 +40,18 @@
         .post(API + '/api/report', vm.incident)
         .then($log.debug)
         .catch($log.error)
+    }
+
+    function isIncident () {
+      return vm.incident.type
+        && vm.incident.lat
+        && vm.incident.lng
+        && vm.incident.data.name
+    }
+
+    function onDragEnd ($ev) {
+      vm.incident.lat = $ev.latLng.lat()
+      vm.incident.lng = $ev.latLng.lng()
     }
   }
 })()

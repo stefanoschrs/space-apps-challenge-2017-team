@@ -1,0 +1,37 @@
+<ion-view class="state-login" view-title="Login">
+  <ion-content class="padding">
+    <h3 class="text-center">Personal Biometric Data</h3>
+
+    <div ng-if="!loginCtrl.loginActive">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Username</span>
+
+          <input type="text" placeholder="Username">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+
+          <input type="password" placeholder="Password">
+        </label>
+
+        <br>
+
+        <div>
+          <button class="button button-block button-dark" ng-click="loginCtrl.login()">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="loginCtrl.loginActive">
+      <p>SPO2: <strong>98%</strong></p>
+      <p>Pulse: <strong><span ng-bind="Math.floor(Math.random() * 40) + 80"></span> bpm</strong></p>
+      <p>Temperature: <strong><span ng-bind="Math.floor(Math.random() * 6) + 30"></span> °C</strong></p>
+      <p>Preasure: <strong><span ng-bind="Math.floor(Math.random() * 20) + 120"></span> mmHg</strong></p>
+    </div>
+  </ion-content>
+</ion-view>
+
