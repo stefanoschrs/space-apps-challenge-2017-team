@@ -21,3 +21,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "views/map";
+
+.text-center { text-align: center }
+.title-center { text-align: center !important }

@@ -13,17 +13,6 @@
       templateUrl: 'templates/menu.html'
     })
 
-    sp.state('app.home', {
-      url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/home.html',
-          controller: 'HomeController',
-          controllerAs: 'home'
-        }
-      }
-    })
-
     sp.state('app.map', {
       url: '/map',
       views: {
@@ -35,6 +24,17 @@
       }
     })
 
-    $urlRouterProvider.otherwise('/app/home');
+    sp.state('app.shelters', {
+      url: '/shelters',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/shelters.html',
+          controller: 'SheltersController',
+          controllerAs: 'sheltersCtrl'
+        }
+      }
+    })
+
+    $urlRouterProvider.otherwise('/app/map');
   }
 })()

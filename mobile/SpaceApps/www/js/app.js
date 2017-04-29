@@ -1,5 +1,8 @@
 (function () {
   angular
-    //.module('SpaceApps', ['ionic'])
-    .module('SpaceApps', ['ionic', 'ngMap'])
+    .module('SpaceApps', [
+      'ionic',
+      'ngMap',
+      'ngCordova'
+    ])
 })()

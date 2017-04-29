@@ -9817,3 +9817,9 @@ a.button {
 
 ng-map {
   height: 100%; }
+
+.text-center {
+  text-align: center; }
+
+.title-center {
+  text-align: center !important; }

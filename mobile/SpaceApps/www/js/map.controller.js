@@ -9,19 +9,10 @@
 
   function MapController ($log, NgMap, SocketFactory) {
     const vm = this
-    const socket = SocketFactory.get()
+    let socket
 
     vm.shelterMarkers = []
     vm.fireMarkers = []
-
-    socket.on('locations:shelters', (data) => {
-      $log.debug('soc:locations:shelters', data)
-      _addLocations('shelter', data)
-    })
-    socket.on('locations:fire', (data) => {
-      $log.debug('soc:locations:fire', data)
-      _addLocations('fire', data)
-    })
 
     NgMap
       .getMap()
@@ -29,8 +20,28 @@
         $log.debug('Map ready!')
         vm.map = map
 
-        socket.emit('map-ready')
+        socketConnect()
       })
+
+    function socketConnect () {
+      socket = SocketFactory.get()
+
+      if (!socket) return setTimeout(socketConnect, 250)
+
+      socket.emit('map-ready')
+
+      socket.on('locations:shelters', (data) => {
+        $log.debug('soc:locations:shelters', data)
+        _addLocations('shelter', data)
+        _removeLocations('shelter', data)
+      })
+
+      socket.on('locations:fire', (data) => {
+        $log.debug('soc:locations:fire', data)
+        _addLocations('fire', data)
+        _removeLocations('fire', data)
+      })
+    }
 
     function _addLocations (type, locations) {
       locations.forEach((location) => {
@@ -59,6 +70,20 @@
         }))
         vm.markerClusterer = new MarkerClusterer(vm.map, markers, {})
       })
+    }
+
+    function _removeLocations (type, locations) {
+      for (let i = vm[type + 'Markers'].length - 1; i >= 0; i--) {
+        let marker = vm[type + 'Markers'][i]
+
+        if (locations.find((location) => location.data.id === marker.data.id)) {
+          return
+        }
+        $log.debug('Removing marker')
+
+        marker.setMap(null)
+        vm[type + 'Markers'].splice(i, 1)
+      }
     }
   }
 })()

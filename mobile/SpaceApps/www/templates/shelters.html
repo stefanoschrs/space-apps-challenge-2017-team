@@ -1,0 +1,26 @@
+<ion-view view-title="Shelters">
+  <ion-content>
+    <br>
+    <div class="text-center">
+      <button class="button button-dark" ng-click="sheltersCtrl.findNearestShelter()">
+        Find nearest shelter <i class="ion ion-android-locate"></i>
+      </button>
+    </div>
+
+    <h3 class="text-center">or</h3>
+
+    <div class="item item-input">
+      <input
+        type="text"
+        placeholder="Search for shelter" ng-init="searchValue = ''" ng-model="searchValue">
+    </div>
+
+    <ion-list>
+      <ion-item ng-repeat="item in sheltersCtrl.shelters"
+                ng-click="sheltersCtrl.selectShelter(item)"
+                ng-show="item.data.name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1">
+        <span ng-bind="item.data.name"></span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
