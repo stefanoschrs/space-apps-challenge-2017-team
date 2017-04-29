@@ -35,6 +35,17 @@
       }
     })
 
+    sp.state('app.report', {
+      url: '/report',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/report.html',
+          controller: 'ReportController',
+          controllerAs: 'reportCtrl'
+        }
+      }
+    })
+
     $urlRouterProvider.otherwise('/app/map');
   }
 })()

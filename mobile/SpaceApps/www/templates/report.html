@@ -1,0 +1,32 @@
+<ion-view class="state-report" view-title="Report">
+  <ion-content padding="true">
+    <h2 class="text-center">Report an incident</h2>
+
+    <div>
+      <h4>Name</h4>
+      <input type="text" placeholder="Sample Incident Name" ng-model="reportCtrl.incident.data.name">
+    </div>
+    <br>
+
+    <div>
+      <h4>Incident Type</h4>
+      <select ng-model="reportCtrl.incident.type">
+        <option>Fire</option>
+        <option>Flood</option>
+        <option>Landslide</option>
+        <option>Smoke</option>
+      </select>
+    </div>
+    <br>
+
+    <div>
+      <h4>Pick Location</h4>
+      <ng-map
+        zoom="10"
+        center="[34.999481, 32.9986789]"
+        street-view-control="false"
+        disable-default-u-i="true">
+      </ng-map>
+    </div>
+  </ion-content>
+</ion-view>

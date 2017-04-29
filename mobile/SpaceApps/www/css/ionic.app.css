@@ -9815,8 +9815,11 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-ng-map {
+.state-map ng-map {
   height: 100%; }
+
+.state-report ng-map {
+  height: calc(100% - 60px); }
 
 .text-center {
   text-align: center; }

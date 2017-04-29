@@ -38,18 +38,17 @@
 
     function findNearestShelter () {
       $cordovaGeolocation
-        .getCurrentPosition({timeout: 10000, enableHighAccuracy: false})
+        .getCurrentPosition({ timeout: 10000, enableHighAccuracy: false })
         .then((position) => {
           $log.debug(position)
 
           let minDistance = Number.MAX_VALUE
           let nearestShelterIndex = -1
-
           vm.shelters.forEach((shelter, index) => {
-            let euklidian = Math.sqrt(Math.pow(
-                (position.coords.latitude - shelter.lng),2)
-              + Math.pow(
-                (position.coords.longitude - shelter.lng),2))
+            let euklidian = Math.sqrt(
+              Math.pow((position.coords.latitude - shelter.lng), 2)
+              + Math.pow((position.coords.longitude - shelter.lng), 2)
+            )
 
             if (minDistance > euklidian) {
               minDistance = euklidian
@@ -63,7 +62,6 @@
 
     function selectShelter (value) {
       vm.selectedShelter = value
-      $log.debug(value)
       vm.modal.show()
     }
   }
