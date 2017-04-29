@@ -17,6 +17,8 @@
       }
 
       SocketFactory.init()
+
+      navigator.splashscreen && navigator.splashscreen.hide()
     })
   }
 })()
