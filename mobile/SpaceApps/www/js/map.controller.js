@@ -13,6 +13,8 @@
 
     vm.shelterMarkers = []
     vm.fireMarkers = []
+    vm.landslideMarkers = []
+    vm.floodMarkers = []
 
     NgMap
       .getMap()
