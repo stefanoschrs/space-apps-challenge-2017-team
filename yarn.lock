@@ -9,6 +9,10 @@ accepts@1.3.3, accepts@~1.3.3:
     mime-types "~2.1.11"
     negotiator "0.6.1"
 
+adj-noun@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/adj-noun/-/adj-noun-0.1.1.tgz#1d7547dc8c3550ccedbfc68e6c31e7d0331bfe01"
+
 after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
