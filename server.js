@@ -14,6 +14,7 @@ const app = express()
 const server = http.Server(app);
 const io = socketIo(server);
 
+let shelterNames = ['RescueIn', 'RescueShell', 'Shellnet', 'Nestfold']
 let dummyLocations = {
   shelter: (() => {
     return new Array(3)
@@ -42,7 +43,7 @@ let dummyLocations = {
           rainFallOutside: Math.random() * 25 + 0,
 
           data: {
-            name: ['RescueIn', 'RescueShell', 'Shellnet'][Math.floor(Math.random() * 3)],
+            name: shelterNames.pop(),
             id: uuid()
           }
         }
