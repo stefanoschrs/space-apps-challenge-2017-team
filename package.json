@@ -6,5 +6,5 @@
 		"socket.io": "^1.7.3",
 		"uuid": "^3.0.1"
 	},
-	"main": "server.js"
+	"main": "server/server.js"
 }
