@@ -8,6 +8,8 @@ const socketIo = require('socket.io')
 const bodyParser = require('body-parser')
 const uuid = require('uuid')
 
+const port = process.env.PORT || 5000
+
 const app = express()
 const server = http.Server(app);
 const io = socketIo(server);
@@ -88,7 +90,7 @@ app.post('/api/report', (req, res) => {
   sendLocations()
 })
 
-server.listen(process.env.PORT || 5000);
+server.listen(port, () => logger.debug(`Server listening on ${port}`))
 
 /**
  * Socket Stuff

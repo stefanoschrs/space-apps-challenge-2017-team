@@ -1,9 +1,10 @@
 {
-  "dependencies": {
-    "agathias": "0.0.3",
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3",
-    "uuid": "^3.0.1"
-  }
+	"dependencies": {
+		"agathias": "0.0.3",
+		"body-parser": "^1.17.1",
+		"express": "^4.15.2",
+		"socket.io": "^1.7.3",
+		"uuid": "^3.0.1"
+	},
+	"main": "server.js"
 }
