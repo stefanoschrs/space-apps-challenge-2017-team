@@ -5,7 +5,6 @@ const http = require('http')
 const uuid = require('uuid')
 const logger = require('agathias')
 const express = require('express')
-const adjNoun = require('adj-noun')
 const socketIo = require('socket.io')
 const bodyParser = require('body-parser')
 
@@ -14,8 +13,6 @@ const port = process.env.PORT || 5000
 const app = express()
 const server = http.Server(app);
 const io = socketIo(server);
-
-adjNoun.seed(666)
 
 let dummyLocations = {
   shelter: (() => {
@@ -45,7 +42,7 @@ let dummyLocations = {
           rainFallOutside: Math.random() * 25 + 0,
 
           data: {
-            name: adjNoun().join(' '),
+            name: ['RescueIn', 'RescueShell', 'Shellnet'][Math.floor(Math.random() * 3)],
             id: uuid()
           }
         }
