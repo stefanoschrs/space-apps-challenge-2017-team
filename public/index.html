@@ -32,10 +32,34 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
+		.spin {
+			animation-name: spin;
+			animation-duration: 4000ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+
+		@keyframes spin {
+			0%  { opacity:1 }
+			33% { opacity:.2 }
+			66% { opacity:1 }
+			99% { opacity:.2 }
+		}
 	</style>
 </head>
 <body>
-	<h1>NestFold</h1>
-	<img class="space-apps" src="spaceapps.png" alt="Space Apps Challenge">
+<h1>NestFold</h1>
+<img class="space-apps" src="spaceapps.png" alt="Space Apps Challenge" onclick="spin()">
+
+<script>
+  function spin () {
+    let image = document.querySelector('.space-apps')
+
+    image.className += ' spin'
+    setTimeout(() => {
+      image.className = image.className.replace(/spin/g, '')
+    }, 4000)
+  }
+</script>
 </body>
 </html>
