@@ -30,8 +30,8 @@
 
       socket.emit('map-ready')
 
-      socket.on('locations:shelters', (data) => {
-        $log.debug('soc:locations:shelters', data)
+      socket.on('locations:shelter', (data) => {
+        $log.debug('soc:locations:shelter', data)
         _addLocations('shelter', data)
         _removeLocations('shelter', data)
       })
@@ -40,6 +40,18 @@
         $log.debug('soc:locations:fire', data)
         _addLocations('fire', data)
         _removeLocations('fire', data)
+      })
+
+      socket.on('locations:landslide', (data) => {
+        $log.debug('soc:locations:landslide', data)
+        _addLocations('landslide', data)
+        _removeLocations('landslide', data)
+      })
+
+      socket.on('locations:flood', (data) => {
+        $log.debug('soc:locations:flood', data)
+        _addLocations('flood', data)
+        _removeLocations('flood', data)
       })
     }
 

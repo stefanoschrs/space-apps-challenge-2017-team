@@ -19,12 +19,22 @@
 			background-position: bottom right;
 
 			font-family: 'Ubuntu', sans-serif;
+
+			text-align: center;
 		}
 		h1 {
 			font-size: 50px;
-			text-align: center;
 			margin: 0;
-			padding: 20px;
+			padding: 40px 0 10px 0;
+		}
+		a {
+			text-decoration: none;
+			font-size: 40px;
+			vertical-align: middle;
+		}
+		p {
+			margin: 0;
+			padding: 10px;
 		}
 		.space-apps {
 			position: absolute;
@@ -48,18 +58,21 @@
 	</style>
 </head>
 <body>
-<h1>NestFold</h1>
-<img class="space-apps" src="spaceapps.png" alt="Space Apps Challenge" onclick="spin()">
+	<h1>NestFold <a href="https://2017.spaceappschallenge.org/challenges/warning-danger-ahead/and-you-can-help-fight-fires/teams/nestfold/stream" target="_blank">⇢</a></h1>
 
-<script>
-  function spin () {
-    let image = document.querySelector('.space-apps')
+	<p>Space Apps Challenge 2017 - Cyprus</p>
 
-    image.className += ' spin'
-    setTimeout(() => {
-      image.className = image.className.replace(/spin/g, '')
-    }, 4000)
-  }
-</script>
+	<img class="space-apps" src="spaceapps.png" alt="Space Apps Challenge" onclick="spin()">
+
+	<script>
+	  function spin () {
+		let image = document.querySelector('.space-apps')
+
+		image.className += ' spin'
+		setTimeout(() => {
+		  image.className = image.className.replace(/spin/g, '')
+		}, 4000)
+	  }
+	</script>
 </body>
 </html>

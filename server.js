@@ -18,7 +18,7 @@ const io = socketIo(server);
 adjNoun.seed(666)
 
 let dummyLocations = {
-  shelters: (() => {
+  shelter: (() => {
     return new Array(3)
       .join('0')
       .split('')
@@ -66,7 +66,14 @@ let dummyLocations = {
           }
         }
       })
-  })()
+  })(),
+  landslide: [
+    { lat: 34.75466, lng: 32.8361003, data: { name: 'Landslide 1', id: uuid()} }
+  ],
+  flood: [
+    { lat: 34.664748, lng: 32.8759773, data: { name: 'Flood 1', id: uuid()} },
+    { lat: 34.666733, lng: 32.8717713, data: { name: 'Flood 2', id: uuid()} }
+  ]
 }
 
 app.use(bodyParser.json())
@@ -82,7 +89,7 @@ app.use((req, res, next) => {
 app.get('/api', (req, res) => res.send('Hello there! ( ͡° ͜ʖ ͡°)'))
 
 app.get('/api/shelters', (req, res) => res.send({
-  shelters: dummyLocations.shelters
+  shelters: dummyLocations.shelter
 }))
 
 app.post('/api/report', (req, res) => {
@@ -109,6 +116,8 @@ io.on('connection', (socket) => {
 })
 
 function sendLocations () {
-  io.sockets.emit('locations:shelters', dummyLocations.shelters)
+  io.sockets.emit('locations:shelter', dummyLocations.shelter)
   io.sockets.emit('locations:fire', dummyLocations.fire)
+  io.sockets.emit('locations:landslide', dummyLocations.landslide)
+  io.sockets.emit('locations:flood', dummyLocations.flood)
 }
