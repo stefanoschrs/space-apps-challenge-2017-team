@@ -68,13 +68,15 @@ let dummyLocations = {
 
 app.use(bodyParser.json())
 
+app.use(express.static(`${__dirname}/public`))
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 })
 
-app.get('/', (req, res) => res.send('Hello there! ( ͡° ͜ʖ ͡°)'))
+app.get('/api', (req, res) => res.send('Hello there! ( ͡° ͜ʖ ͡°)'))
 
 app.get('/api/shelters', (req, res) => res.send({
   shelters: dummyLocations.shelters
